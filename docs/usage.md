@@ -3,7 +3,7 @@
 
 ## Kurulum
 
-pyVisio'i pip ile kurabilirsiniz:
+pyVisio'yu pip ile kurabilirsiniz:
 
 ```bash
 pip install pyVisio
@@ -12,7 +12,7 @@ pip install pyVisio
 Geliştirme sürümünü yüklemek için, projeyi klonlayıp `pip install -e .` komutunu çalıştırabilirsiniz:
 
 ```bash
-git clone https://github.com/yourusername/pyVisio.git
+git clone https://github.com/kayahuseyinn/pyVisio.git
 cd pyVisio
 pip install -e .
 ```
@@ -90,76 +90,78 @@ Etkileşimli pasta grafiği oluşturmak için `pie_chart` fonksiyonunun `interac
 pv.pie_chart(data_pie, title="Etkileşimli Pasta Grafiği", interactive=True)
 ```
 
-### Temalar ve Modlar
+### Zaman Serisi Analizi
 
-pyVisio, grafiklerinize modern ve çekici temalar eklemenize olanak tanır. Temaları kullanmak için `set_theme` fonksiyonunu kullanabilirsiniz.
-
-#### Dark Mode
+Zaman serisi analizi yapmak için `time_series_analysis` fonksiyonunu kullanabilirsiniz.
 
 ```python
-pv.set_theme('dark')
-```
-
-#### Light Mode
-
-```python
-pv.set_theme('light')
-```
-
-### Canlı Veri Güncellemeleri
-
-Canlı veri güncellemeleri yapabilmek için `LiveChart` sınıfını kullanabilirsiniz.
-
-```python
+import pyVisio as pv
 import numpy as np
-import time
 
-def get_live_data():
-    x = list(range(10))
-    y = np.random.randint(0, 10, size=10)
-    return x, y
-
-live_chart = pv.LiveChart(title="Canlı Çizgi Grafiği")
-live_chart.start_live_update(get_live_data, interval=2)
-```
-
-### Veri Analizi
-
-#### Betimsel İstatistikler ve Korelasyon Matrisi
-
-```python
-data_analysis = {
-    'column1': [1, 2, 3, 4, 5],
-    'column2': [5, 4, 3, 2, 1]
-}
-
-description, correlation = pv.analyze_data(data_analysis)
-print("Betimsel İstatistikler:")
-print(description)
-print("
-Korelasyon Matrisi:")
-print(correlation)
-```
-
-#### Doğrusal Regresyon
-
-```python
-x = np.array([1, 2, 3, 4, 5])
-y = np.array([1, 3, 3, 2, 5])
-
-summary, predictions = pv.linear_regression(x, y)
+data_ts = np.random.randn(100)
+summary, forecast, anomalies = pv.time_series_analysis(data_ts, detect_anomalies=True)
 print(summary)
+print("Forecast:", forecast)
+print("Anomalies:", anomalies)
 ```
 
-#### Zaman Serisi Analizi
+### Anomali Tespiti
+
+Zaman serisi verisinde anomali tespiti yapmak için `detect_anomalies_in_series` fonksiyonunu kullanabilirsiniz.
 
 ```python
-import warnings
+import pyVisio as pv
+import numpy as np
 
-with warnings.catch_warnings():
-    warnings.simplefilter("ignore")
-    data_ts = np.random.randn(1000)
-    summary, forecast = pv.time_series_analysis(data_ts)
-    print(summary)
-    print("Forecast:", forecast)
+data_ts = np.random.randn(100)
+anomalies = pv.detect_anomalies_in_series(data_ts)
+print("Anomalies:", anomalies)
+```
+
+### Rapor Oluşturma
+
+Otomatik rapor oluşturmak için `generate_report` fonksiyonunu kullanabilirsiniz.
+
+```python
+import pyVisio as pv
+
+report_data = {
+    'title': 'Veri Analiz Raporu',
+    'author': 'Hüseyin Kaya',
+    'date': '2024-06-22',
+    'content': [
+        {'type': 'line_chart', 'data': [1, 2, 3, 4, 5], 'title': 'Çizgi Grafiği'},
+        {'type': 'bar_chart', 'data': {'A': 10, 'B': 20, 'C': 30}, 'title': 'Çubuk Grafiği'}
+    ]
+}
+pv.generate_report(report_data, format='pdf', output_path='report.pdf')
+```
+
+### Veri Temizleme
+
+Veri temizleme işlemi yapmak için `clean_data` fonksiyonunu kullanabilirsiniz.
+
+```python
+import pyVisio as pv
+
+raw_data = {'column1': [1, 2, None, 4, 5], 'column2': [5, None, 3, 2, 1]}
+cleaned_data = pv.clean_data(raw_data, method='fillna', fill_value=0)
+pv.line_chart(cleaned_data['column1'], title="Temizlenmiş Veri ile Çizgi Grafiği")
+```
+
+### Tema Ayarlama
+
+Grafiklerin temasını ayarlamak için `set_theme` fonksiyonunu kullanabilirsiniz.
+
+```python
+import pyVisio as pv
+
+custom_theme = {
+    'background_color': 'black',
+    'grid_color': 'gray',
+    'line_color': 'cyan',
+    'font_family': 'Arial'
+}
+pv.set_theme(custom_theme)
+pv.line_chart([1, 2, 3, 4, 5], title="Özelleştirilmiş Tema ile Çizgi Grafiği")
 ```
