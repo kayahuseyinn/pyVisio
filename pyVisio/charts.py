@@ -2,15 +2,16 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 import plotly.graph_objects as go
 
-def line_chart(data, title=None, xlabel=None, ylabel=None, interactive=False, color='blue', linestyle='-', marker='o'):
+def line_chart(data, title=None, xlabel=None, ylabel=None, color='blue', interactive=False, filters=False, tooltip=False):
     if interactive:
-        fig = go.Figure()
-        fig.add_trace(go.Scatter(x=list(range(len(data))), y=data, mode='lines+markers', line=dict(color=color)))
-        fig.update_layout(title=title, xaxis_title=xlabel, yaxis_title=ylabel)
+        fig = px.line(x=range(len(data)), y=data, title=title, labels={'x': xlabel, 'y': ylabel})
+        if filters:
+            fig.update_layout(xaxis_rangeslider_visible=True)
+        if tooltip:
+            fig.update_traces(hoverinfo="all", hovertemplate="Y: %{y}")
         fig.show()
     else:
-        plt.figure()
-        plt.plot(data, color=color, linestyle=linestyle, marker=marker)
+        plt.plot(data, color=color)
         if title:
             plt.title(title)
         if xlabel:
