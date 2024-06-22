@@ -1,13 +1,14 @@
 Metadata-Version: 2.1
 Name: pyVisio
-Version: 0.4
-Summary: An interactive and dynamic data visualization and analysis library
+Version: 0.5
+Summary: Interactive and dynamic data visualization library
 Home-page: https://github.com/kayahuseyinn/pyVisio
 Author: Hüseyin Kaya
 Author-email: kaya87826@gmail.com
 Classifier: Programming Language :: Python :: 3
 Classifier: License :: OSI Approved :: MIT License
 Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
 Description-Content-Type: text/markdown
 License-File: LICENSE
 Requires-Dist: matplotlib
@@ -15,6 +16,8 @@ Requires-Dist: plotly
 Requires-Dist: pandas
 Requires-Dist: numpy
 Requires-Dist: statsmodels
+Requires-Dist: weasyprint
+Requires-Dist: jinja2
 
 
 # pyVisio Usage Guide

@@ -1,5 +1,8 @@
-matplotlib 
-plotly 
-pandas 
-numpy 
-statsmodels 
+matplotlib
+plotly
+pandas
+numpy
+statsmodels
+weasyprint
+jinja2
+pygobject
