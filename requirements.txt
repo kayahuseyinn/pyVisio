@@ -5,3 +5,10 @@ numpy
 statsmodels
 jinja2
 reportlab
+flake8
+pytest
+pytest-cov
+codecov
+setuptools
+Wheel
+twine
