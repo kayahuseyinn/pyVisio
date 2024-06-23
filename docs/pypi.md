@@ -25,7 +25,7 @@
 
 ### line_chart
 ```python
-def line_chart(data, title="Line Chart", xlabel="X Axis", ylabel="Y Axis", color='blue', interactive=False):
+pv.line_chart(data, title="Line Chart", xlabel="X Axis", ylabel="Y Axis", color='blue', interactive=False)
 ```
 Creates a line chart.
 
@@ -39,7 +39,7 @@ Creates a line chart.
 
 ### bar_chart
 ```python
-def bar_chart(data, title="Bar Chart", xlabel="Category", ylabel="Value", color='blue', interactive=False):
+pv.bar_chart(data, title="Bar Chart", xlabel="Category", ylabel="Value", color='blue', interactive=False)
 ```
 Creates a bar chart.
 
@@ -53,7 +53,7 @@ Creates a bar chart.
 
 ### scatter_plot
 ```python
-def scatter_plot(x_data, y_data, title="Scatter Plot", xlabel="X Axis", ylabel="Y Axis", color='blue', interactive=False):
+pv.scatter_plot(x_data, y_data, title="Scatter Plot", xlabel="X Axis", ylabel="Y Axis", color='blue', interactive=False)
 ```
 Creates a scatter plot.
 
@@ -68,7 +68,7 @@ Creates a scatter plot.
 
 ### pie_chart
 ```python
-def pie_chart(data, title="Pie Chart", interactive=False):
+pv.pie_chart(data, title="Pie Chart", interactive=False)
 ```
 Creates a pie chart.
 
@@ -79,7 +79,7 @@ Creates a pie chart.
 
 ### time_series_analysis
 ```python
-def time_series_analysis(data, lags=1, detect_anomalies=False, anomaly_threshold=3):
+pv.time_series_analysis(data, lags=1, detect_anomalies=False, anomaly_threshold=3)
 ```
 Performs time series analysis.
 
@@ -91,7 +91,7 @@ Performs time series analysis.
 
 ### detect_anomalies_in_series
 ```python
-def detect_anomalies_in_series(data, threshold=3):
+pv.detect_anomalies_in_series(data, threshold=3)
 ```
 Detects anomalies in a time series.
 
@@ -101,7 +101,7 @@ Detects anomalies in a time series.
 
 ### clean_data
 ```python
-def clean_data(data, method='fillna', fill_value=0):
+pv.clean_data(data, method='fillna', fill_value=0)
 ```
 Cleans the data.
 
@@ -112,7 +112,7 @@ Cleans the data.
 
 ### set_theme
 ```python
-def set_theme(theme):
+pv.set_theme(theme)
 ```
 Sets the theme for the charts.
 
@@ -121,7 +121,7 @@ Sets the theme for the charts.
 
 ### live_line_chart
 ```python
-def live_line_chart(data, title="Live Line Chart", xlabel="X Axis", ylabel="Y Axis", color='blue'):
+pv.live_line_chart(data, title="Live Line Chart", xlabel="X Axis", ylabel="Y Axis", color='blue')
 ```
 Creates a live line chart.
 
@@ -134,7 +134,7 @@ Creates a live line chart.
 
 ### live_bar_chart
 ```python
-def live_bar_chart(data, title="Live Bar Chart", xlabel="Category", ylabel="Value", color='blue'):
+pv.live_bar_chart(data, title="Live Bar Chart", xlabel="Category", ylabel="Value", color='blue')
 ```
 Creates a live bar chart.
 
@@ -147,7 +147,7 @@ Creates a live bar chart.
 
 ### generate_report
 ```python
-def generate_report(report_data, format='pdf', output_path='report.pdf'):
+pv.generate_report(report_data, format='pdf', output_path='report.pdf')
 ```
 Generates a report.
 
@@ -158,7 +158,7 @@ Generates a report.
 
 ### basic_analysis
 ```python
-def basic_analysis(data):
+pv.basic_analysis(data)
 ```
 Performs basic analysis on the data.
 
@@ -167,7 +167,7 @@ Performs basic analysis on the data.
 
 ### advanced_analysis
 ```python
-def advanced_analysis(data):
+pv.advanced_analysis(data)
 ```
 Performs advanced analysis on the data.
 

@@ -25,7 +25,7 @@
 
 ### line_chart
 ```python
-def line_chart(data, title="Çizgi Grafiği", xlabel="X Ekseni", ylabel="Y Ekseni", color='mavi', interactive=False):
+pv.line_chart(data, title="Çizgi Grafiği", xlabel="X Ekseni", ylabel="Y Ekseni", color='mavi', interactive=False)
 ```
 Bir çizgi grafiği oluşturur.
 
@@ -38,7 +38,7 @@ Bir çizgi grafiği oluşturur.
 
 ### bar_chart
 ```python
-def bar_chart(data, title="Bar Grafiği", xlabel="Kategori", ylabel="Değer", color='mavi', interactive=False):
+pv.bar_chart(data, title="Bar Grafiği", xlabel="Kategori", ylabel="Değer", color='mavi', interactive=False)
 ```
 Bir bar grafiği oluşturur.
 
@@ -51,7 +51,7 @@ Bir bar grafiği oluşturur.
 
 ### scatter_plot
 ```python
-def scatter_plot(x_data, y_data, title="Dağılım Grafiği", xlabel="X Ekseni", ylabel="Y Ekseni", color='mavi', interactive=False):
+pv.scatter_plot(x_data, y_data, title="Dağılım Grafiği", xlabel="X Ekseni", ylabel="Y Ekseni", color='mavi', interactive=False)
 ```
 Bir dağılım grafiği oluşturur.
 
@@ -65,7 +65,7 @@ Bir dağılım grafiği oluşturur.
 
 ### pie_chart
 ```python
-def pie_chart(data, title="Pasta Grafiği", interactive=False):
+pv.pie_chart(data, title="Pasta Grafiği", interactive=False)
 ```
 Bir pasta grafiği oluşturur.
 
@@ -75,7 +75,7 @@ Bir pasta grafiği oluşturur.
 
 ### time_series_analysis
 ```python
-def time_series_analysis(data, lags=1, detect_anomalies=False, anomaly_threshold=3):
+pv.time_series_analysis(data, lags=1, detect_anomalies=False, anomaly_threshold=3)
 ```
 Zaman serisi analizi yapar.
 
@@ -86,7 +86,7 @@ Zaman serisi analizi yapar.
 
 ### detect_anomalies_in_series
 ```python
-def detect_anomalies_in_series(data, threshold=3):
+pv.detect_anomalies_in_series(data, threshold=3)
 ```
 Bir zaman serisinde anomalileri tespit eder.
 
@@ -95,7 +95,7 @@ Bir zaman serisinde anomalileri tespit eder.
 
 ### clean_data
 ```python
-def clean_data(data, method='fillna', fill_value=0):
+pv.clean_data(data, method='fillna', fill_value=0)
 ```
 Veriyi temizler.
 
@@ -105,7 +105,7 @@ Veriyi temizler.
 
 ### set_theme
 ```python
-def set_theme(theme):
+pv.set_theme(theme)
 ```
 Grafikler için temayı ayarlar.
 
@@ -113,7 +113,7 @@ Grafikler için temayı ayarlar.
 
 ### live_line_chart
 ```python
-def live_line_chart(data, title="Canlı Çizgi Grafiği", xlabel="X Ekseni", ylabel="Y Ekseni", color='mavi'):
+pv.live_line_chart(data, title="Canlı Çizgi Grafiği", xlabel="X Ekseni", ylabel="Y Ekseni", color='mavi')
 ```
 Bir canlı çizgi grafiği oluşturur.
 
@@ -125,7 +125,7 @@ Bir canlı çizgi grafiği oluşturur.
 
 ### live_bar_chart
 ```python
-def live_bar_chart(data, title="Canlı Bar Grafiği", xlabel="Kategori", ylabel="Değer", color='mavi'):
+pv.live_bar_chart(data, title="Canlı Bar Grafiği", xlabel="Kategori", ylabel="Değer", color='mavi')
 ```
 Bir canlı bar grafiği oluşturur.
 
@@ -137,7 +137,7 @@ Bir canlı bar grafiği oluşturur.
 
 ### generate_report
 ```python
-def generate_report(report_data, format='pdf', output_path='rapor.pdf'):
+pv.generate_report(report_data, format='pdf', output_path='rapor.pdf')
 ```
 Bir rapor oluşturur.
 
@@ -147,7 +147,7 @@ Bir rapor oluşturur.
 
 ### basic_analysis
 ```python
-def basic_analysis(data):
+pv.basic_analysis(data):
 ```
 Veri üzerinde temel analiz yapar.
 
@@ -155,7 +155,7 @@ Veri üzerinde temel analiz yapar.
 
 ### advanced_analysis
 ```python
-def advanced_analysis(data):
+pv.advanced_analysis(data):
 ```
 Veri üzerinde ileri düzey analiz yapar.
 
