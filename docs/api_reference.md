@@ -1,189 +1,175 @@
 
-# API Referansı
+# pyVisio API Referansı
 
-## `line_chart`
+## İçindekiler
+- [Giriş](#giriş)
+- [Fonksiyonlar](#fonksiyonlar)
+  - [line_chart](#line_chart)
+  - [bar_chart](#bar_chart)
+  - [scatter_plot](#scatter_plot)
+  - [pie_chart](#pie_chart)
+  - [time_series_analysis](#time_series_analysis)
+  - [detect_anomalies_in_series](#detect_anomalies_in_series)
+  - [clean_data](#clean_data)
+  - [set_theme](#set_theme)
+  - [live_line_chart](#live_line_chart)
+  - [live_bar_chart](#live_bar_chart)
+  - [generate_report](#generate_report)
+  - [basic_analysis](#basic_analysis)
+  - [advanced_analysis](#advanced_analysis)
 
-Çizgi grafiği oluşturur.
+## Giriş
+`pyVisio`, zengin ve etkileşimli görselleştirmeler için kapsamlı araçlar sağlayan dinamik ve etkileşimli bir veri görselleştirme kütüphanesidir. Bu kütüphane, çeşitli grafik türleri oluşturma, veri analizi yapma ve raporlar oluşturma yeteneklerini sunar.
 
-**Parametreler**:
-- `data` (list): Grafik için veri.
-- `title` (str, optional): Grafik başlığı. Varsayılan `None`.
-- `xlabel` (str, optional): X ekseni etiketi. Varsayılan `None`.
-- `ylabel` (str, optional): Y ekseni etiketi. Varsayılan `None`.
-- `interactive` (bool, optional): Etkileşimli grafik oluşturur. Varsayılan `False`.
-- `color` (str, optional): Çizgi rengi. Varsayılan `'blue'`.
+## Fonksiyonlar
 
-**Örnek**:
-
+### line_chart
 ```python
-import pyVisio as pv
-
-data = [1, 2, 3, 4, 5]
-pv.line_chart(data, title="Çizgi Grafiği", xlabel="X Ekseni", ylabel="Y Ekseni", color='red')
+def line_chart(data, title="Çizgi Grafiği", xlabel="X Ekseni", ylabel="Y Ekseni", color='mavi', interactive=False):
 ```
+Bir çizgi grafiği oluşturur.
 
-## `bar_chart`
+#### Parametreler
+- **data**: (list) Sayısal değerlerden oluşan liste.
+- **title**: (str) Grafiğin başlığı.
+- **xlabel**: (str) X ekseni etiketi.
+- **ylabel**: (str) Y ekseni etiketi.
+- **color**: (str) Çizginin rengi.
+- **interactive**: (bool) Grafiğin etkileşimli olup olmadığını belirtir.
 
-Çubuk grafiği oluşturur.
-
-**Parametreler**:
-- `data` (dict): Kategoriler ve değerler.
-- `title` (str, optional): Grafik başlığı. Varsayılan `None`.
-- `xlabel` (str, optional): X ekseni etiketi. Varsayılan `None`.
-- `ylabel` (str, optional): Y ekseni etiketi. Varsayılan `None`.
-- `interactive` (bool, optional): Etkileşimli grafik oluşturur. Varsayılan `False`.
-- `color` (str, optional): Çubuk rengi. Varsayılan `'blue'`.
-
-**Örnek**:
-
+### bar_chart
 ```python
-data_bar = {'A': 10, 'B': 20, 'C': 30}
-pv.bar_chart(data_bar, title="Çubuk Grafiği", xlabel="Kategori", ylabel="Değer", color='blue')
+def bar_chart(data, title="Bar Grafiği", xlabel="Kategori", ylabel="Değer", color='mavi', interactive=False):
 ```
+Bir bar grafiği oluşturur.
 
-## `scatter_plot`
+#### Parametreler
+- **data**: (dict) Kategoriler anahtarlar ve sayısal değerler içeren sözlük.
+- **title**: (str) Grafiğin başlığı.
+- **xlabel**: (str) X ekseni etiketi.
+- **ylabel**: (str) Y ekseni etiketi.
+- **color**: (str) Barların rengi.
+- **interactive**: (bool) Grafiğin etkileşimli olup olmadığını belirtir.
 
-Dağılım grafiği oluşturur.
-
-**Parametreler**:
-- `x_data` (list): X ekseni verisi.
-- `y_data` (list): Y ekseni verisi.
-- `title` (str, optional): Grafik başlığı. Varsayılan `None`.
-- `xlabel` (str, optional): X ekseni etiketi. Varsayılan `None`.
-- `ylabel` (str, optional): Y ekseni etiketi. Varsayılan `None`.
-- `interactive` (bool, optional): Etkileşimli grafik oluşturur. Varsayılan `False`.
-- `color` (str, optional): Noktaların rengi. Varsayılan `'blue'`.
-
-**Örnek**:
-
+### scatter_plot
 ```python
-import pyVisio as pv
-
-x_data = [1, 2, 3, 4, 5]
-y_data = [10, 14, 12, 15, 10]
-pv.scatter_plot(x_data, y_data, title="Dağılım Grafiği", xlabel="X Ekseni", ylabel="Y Ekseni", color='blue')
+def scatter_plot(x_data, y_data, title="Dağılım Grafiği", xlabel="X Ekseni", ylabel="Y Ekseni", color='mavi', interactive=False):
 ```
+Bir dağılım grafiği oluşturur.
 
-## `pie_chart`
+#### Parametreler
+- **x_data**: (list) X ekseni için sayısal değerlerden oluşan liste.
+- **y_data**: (list) Y ekseni için sayısal değerlerden oluşan liste.
+- **title**: (str) Grafiğin başlığı.
+- **xlabel**: (str) X ekseni etiketi.
+- **ylabel**: (str) Y ekseni etiketi.
+- **color**: (str) Noktaların rengi.
+- **interactive**: (bool) Grafiğin etkileşimli olup olmadığını belirtir.
 
-Pasta grafiği oluşturur.
-
-**Parametreler**:
-- `data` (dict): Kategoriler ve değerler.
-- `title` (str, optional): Grafik başlığı. Varsayılan `None`.
-- `interactive` (bool, optional): Etkileşimli grafik oluşturur. Varsayılan `False`.
-
-**Örnek**:
-
+### pie_chart
 ```python
-data_pie = {'Elma': 50, 'Armut': 30, 'Kiraz': 20}
-pv.pie_chart(data_pie, title="Pasta Grafiği")
+def pie_chart(data, title="Pasta Grafiği", interactive=False):
 ```
+Bir pasta grafiği oluşturur.
 
-## `time_series_analysis`
+#### Parametreler
+- **data**: (dict) Kategoriler anahtarlar ve sayısal değerler içeren sözlük.
+- **title**: (str) Grafiğin başlığı.
+- **interactive**: (bool) Grafiğin etkileşimli olup olmadığını belirtir.
 
+### time_series_analysis
+```python
+def time_series_analysis(data, lags=1, detect_anomalies=False, anomaly_threshold=3):
+```
 Zaman serisi analizi yapar.
 
-**Parametreler**:
-- `data` (list): Zaman serisi verisi.
-- `lags` (int, optional): Gecikme sayısı. Varsayılan `1`.
-- `detect_anomalies` (bool, optional): Anomali tespiti yapar. Varsayılan `False`.
+#### Parametreler
+- **data**: (list veya numpy array) Sayısal değerlerden oluşan veri.
+- **lags**: (int) ARIMA modelinde kullanılacak lag sayısı.
+- **detect_anomalies**: (bool) Anomalileri tespit edip etmeyeceğini belirtir.
+- **anomaly_threshold**: (int) Anomalileri tespit etmek için eşik değeri.
 
-**Örnek**:
-
+### detect_anomalies_in_series
 ```python
-import pyVisio as pv
-import numpy as np
-
-data_ts = np.random.randn(100)
-summary, forecast, anomalies = pv.time_series_analysis(data_ts, detect_anomalies=True)
-print(summary)
-print("Forecast:", forecast)
-print("Anomalies:", anomalies)
+def detect_anomalies_in_series(data, threshold=3):
 ```
+Bir zaman serisinde anomalileri tespit eder.
 
-## `detect_anomalies_in_series`
+#### Parametreler
+- **data**: (list veya numpy array) Sayısal değerlerden oluşan veri.
+- **threshold**: (int) Anomalileri tespit etmek için eşik değeri.
 
-Zaman serisi verisinde anomali tespiti yapar.
-
-**Parametreler**:
-- `data` (list): Zaman serisi verisi.
-
-**Örnek**:
-
+### clean_data
 ```python
-import pyVisio as pv
-import numpy as np
-
-data_ts = np.random.randn(100)
-anomalies = pv.detect_anomalies_in_series(data_ts)
-print("Anomalies:", anomalies)
+def clean_data(data, method='fillna', fill_value=0):
 ```
+Veriyi temizler.
 
-## `generate_report`
+#### Parametreler
+- **data**: (dict veya pandas DataFrame) Temizlenecek veri.
+- **method**: (str) Veriyi temizlemek için kullanılacak yöntem ('fillna', 'dropna').
+- **fill_value**: (herhangi bir değer) 'fillna' yöntemi kullanılıyorsa NaN değerlerini doldurmak için kullanılacak değer.
 
-Otomatik rapor oluşturur.
-
-**Parametreler**:
-- `report_data` (dict): Rapor verisi.
-- `format` (str, optional): Rapor formatı. Varsayılan `'pdf'`.
-- `output_path` (str, optional): Rapor çıktısı yolu. Varsayılan `'report.pdf'`.
-
-**Örnek**:
-
+### set_theme
 ```python
-import pyVisio as pv
-
-report_data = {
-    'title': 'Veri Analiz Raporu',
-    'author': 'Hüseyin Kaya',
-    'date': '2024-06-22',
-    'content': [
-        {'type': 'line_chart', 'data': [1, 2, 3, 4, 5], 'title': 'Çizgi Grafiği'},
-        {'type': 'bar_chart', 'data': {'A': 10, 'B': 20, 'C': 30}, 'title': 'Çubuk Grafiği'}
-    ]
-}
-pv.generate_report(report_data, format='pdf', output_path='report.pdf')
+def set_theme(theme):
 ```
+Grafikler için temayı ayarlar.
 
-## `clean_data`
+#### Parametreler
+- **theme**: (dict) 'background_color', 'grid_color', 'line_color', 'font_family' anahtarlarına sahip sözlük.
 
-Veri temizleme işlemi yapar.
-
-**Parametreler**:
-- `data` (dict): Temizlenecek veri.
-- `method` (str, optional): Temizleme yöntemi. Varsayılan `'fillna'`.
-- `fill_value` (any, optional): Eksik verilerin doldurulacağı değer. Varsayılan `0`.
-
-**Örnek**:
-
+### live_line_chart
 ```python
-import pyVisio as pv
-
-raw_data = {'column1': [1, 2, None, 4, 5], 'column2': [5, None, 3, 2, 1]}
-cleaned_data = pv.clean_data(raw_data, method='fillna', fill_value=0)
-pv.line_chart(cleaned_data['column1'], title="Temizlenmiş Veri ile Çizgi Grafiği")
+def live_line_chart(data, title="Canlı Çizgi Grafiği", xlabel="X Ekseni", ylabel="Y Ekseni", color='mavi'):
 ```
+Bir canlı çizgi grafiği oluşturur.
 
-## `set_theme`
+#### Parametreler
+- **data**: (list) Sayısal değerlerden oluşan liste.
+- **title**: (str) Grafiğin başlığı.
+- **xlabel**: (str) X ekseni etiketi.
+- **ylabel**: (str) Y ekseni etiketi.
+- **color**: (str) Çizginin rengi.
 
-Grafiklerin temasını ayarlar.
-
-**Parametreler**:
-- `theme` (dict): Tema ayarları.
-
-**Örnek**:
-
+### live_bar_chart
 ```python
-import pyVisio as pv
-
-custom_theme = {
-    'background_color': 'black',
-    'grid_color': 'gray',
-    'line_color': 'cyan',
-    'font_family': 'Arial'
-}
-pv.set_theme(custom_theme)
-pv.line_chart([1, 2, 3, 4, 5], title="Özelleştirilmiş Tema ile Çizgi Grafiği")
+def live_bar_chart(data, title="Canlı Bar Grafiği", xlabel="Kategori", ylabel="Değer", color='mavi'):
 ```
+Bir canlı bar grafiği oluşturur.
 
+#### Parametreler
+- **data**: (dict) Kategoriler anahtarlar ve sayısal değerler içeren sözlük.
+- **title**: (str) Grafiğin başlığı.
+- **xlabel**: (str) X ekseni etiketi.
+- **ylabel**: (str) Y ekseni etiketi.
+- **color**: (str) Barların rengi.
+
+### generate_report
+```python
+def generate_report(report_data, format='pdf', output_path='rapor.pdf'):
+```
+Bir rapor oluşturur.
+
+#### Parametreler
+- **report_data**: (dict) Rapor detaylarını içeren sözlük.
+- **format**: (str) Raporun formatı ('pdf', 'html').
+- **output_path**: (str) Raporun kaydedileceği yol.
+
+### basic_analysis
+```python
+def basic_analysis(data):
+```
+Veri üzerinde temel analiz yapar.
+
+#### Parametreler
+- **data**: (list) Sayısal değerlerden oluşan liste.
+
+### advanced_analysis
+```python
+def advanced_analysis(data):
+```
+Veri üzerinde ileri düzey analiz yapar.
+
+#### Parametreler
+- **data**: (list) Sayısal değerlerden oluşan liste.

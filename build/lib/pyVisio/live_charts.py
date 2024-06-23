@@ -1,41 +1,32 @@
-import matplotlib.pyplot as plt
-import matplotlib.animation as animation
+import plotly.graph_objects as go
+import plotly.express as px
+import pandas as pd
 import numpy as np
+import time
 
 def live_line_chart(data, title="Live Line Chart", xlabel="X Axis", ylabel="Y Axis", color='blue'):
-    fig, ax = plt.subplots()
-    line, = ax.plot(data, color=color)
-    
-    def update(frame, data, line):
-        new_data = data[-1] + np.random.randn()  # Simulating new data point
-        data.append(new_data)
-        line.set_data(range(len(data)), data)
-        ax.set_xlim(0, len(data) - 1)
-        ax.set_ylim(min(data) - 1, max(data) + 1)
-        return line,
+    fig = go.FigureWidget()
+    fig.add_scatter(y=data, mode='lines', line=dict(color=color))
 
-    ani = animation.FuncAnimation(fig, update, fargs=(data, line), frames=range(100), blit=False, interval=200)
-    plt.title(title)
-    plt.xlabel(xlabel)
-    plt.ylabel(ylabel)
-    plt.show()
-    return ani
+    fig.update_layout(
+        title=title,
+        xaxis_title=xlabel,
+        yaxis_title=ylabel
+    )
+
+    display(fig)
+    return fig
 
 def live_bar_chart(data, title="Live Bar Chart", xlabel="Category", ylabel="Value", color='blue'):
-    fig, ax = plt.subplots()
-    bars = ax.bar(data.keys(), data.values(), color=color)
+    df = pd.DataFrame(list(data.items()), columns=['Category', 'Value'])
+    fig = go.FigureWidget()
+    fig.add_bar(x=df['Category'], y=df['Value'], marker_color=color)
 
-    def update(frame, data, bars):
-        new_data = {k: v + np.random.randn() for k, v in data.items()}  # Simulating new data point
-        for bar, new_height in zip(bars, new_data.values()):
-            bar.set_height(new_height)
-        ax.relim()
-        ax.autoscale_view()
-        return bars
+    fig.update_layout(
+        title=title,
+        xaxis_title=xlabel,
+        yaxis_title=ylabel
+    )
 
-    ani = animation.FuncAnimation(fig, update, fargs=(data, bars), frames=range(100), blit=False, interval=200)
-    plt.title(title)
-    plt.xlabel(xlabel)
-    plt.ylabel(ylabel)
-    plt.show()
-    return ani
+    display(fig)
+    return fig

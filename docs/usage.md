@@ -1,167 +1,162 @@
 
 # pyVisio Kullanım Kılavuzu
 
-## Kurulum
+## İçindekiler
+- [Giriş](#giriş)
+- [Fonksiyonlar](#fonksiyonlar)
+  - [line_chart](#line_chart)
+  - [bar_chart](#bar_chart)
+  - [scatter_plot](#scatter_plot)
+  - [pie_chart](#pie_chart)
+  - [time_series_analysis](#time_series_analysis)
+  - [detect_anomalies_in_series](#detect_anomalies_in_series)
+  - [clean_data](#clean_data)
+  - [set_theme](#set_theme)
+  - [live_line_chart](#live_line_chart)
+  - [live_bar_chart](#live_bar_chart)
+  - [generate_report](#generate_report)
+  - [basic_analysis](#basic_analysis)
+  - [advanced_analysis](#advanced_analysis)
 
-pyVisio'yu pip ile kurabilirsiniz:
+## Giriş
+`pyVisio`, zengin ve etkileşimli görselleştirmeler için kapsamlı araçlar sağlayan dinamik ve etkileşimli bir veri görselleştirme kütüphanesidir. Bu kütüphane, çeşitli grafik türleri oluşturma, veri analizi yapma ve raporlar oluşturma yeteneklerini sunar.
 
-```bash
-pip install pyVisio
-```
+## Fonksiyonlar
 
-Geliştirme sürümünü yüklemek için, projeyi klonlayıp `pip install -e .` komutunu çalıştırabilirsiniz:
-
-```bash
-git clone https://github.com/kayahuseyinn/pyVisio.git
-cd pyVisio
-pip install -e .
-```
-
-## Temel Kullanım
-
-### Çizgi Grafiği
-
-Çizgi grafiği oluşturmak için `line_chart` fonksiyonunu kullanabilirsiniz.
-
+### line_chart
 ```python
-import pyVisio as pv
-
-data = [1, 2, 3, 4, 5]
-pv.line_chart(data, title="Çizgi Grafiği", xlabel="X Ekseni", ylabel="Y Ekseni", color='red')
+def line_chart(data, title="Çizgi Grafiği", xlabel="X Ekseni", ylabel="Y Ekseni", color='mavi', interactive=False):
 ```
+Bir çizgi grafiği oluşturur.
 
-### Etkileşimli Çizgi Grafiği
+- **data**: Sayısal değerlerden oluşan liste
+- **title**: Grafiğin başlığı (str)
+- **xlabel**: X ekseni etiketi (str)
+- **ylabel**: Y ekseni etiketi (str)
+- **color**: Çizginin rengi (str)
+- **interactive**: Grafiğin etkileşimli olup olmadığını belirtir (bool)
 
-Etkileşimli çizgi grafiği oluşturmak için `line_chart` fonksiyonunun `interactive` parametresini `True` olarak ayarlayabilirsiniz.
-
+### bar_chart
 ```python
-pv.line_chart(data, title="Etkileşimli Çizgi Grafiği", xlabel="X Ekseni", ylabel="Y Ekseni", interactive=True, color='green')
+def bar_chart(data, title="Bar Grafiği", xlabel="Kategori", ylabel="Değer", color='mavi', interactive=False):
 ```
+Bir bar grafiği oluşturur.
 
-### Çubuk Grafiği
+- **data**: Kategoriler anahtarlar ve sayısal değerler içeren sözlük
+- **title**: Grafiğin başlığı (str)
+- **xlabel**: X ekseni etiketi (str)
+- **ylabel**: Y ekseni etiketi (str)
+- **color**: Barların rengi (str)
+- **interactive**: Grafiğin etkileşimli olup olmadığını belirtir (bool)
 
-Çubuk grafiği oluşturmak için `bar_chart` fonksiyonunu kullanabilirsiniz.
-
+### scatter_plot
 ```python
-data_bar = {'A': 10, 'B': 20, 'C': 30}
-pv.bar_chart(data_bar, title="Çubuk Grafiği", xlabel="Kategori", ylabel="Değer", color='blue')
+def scatter_plot(x_data, y_data, title="Dağılım Grafiği", xlabel="X Ekseni", ylabel="Y Ekseni", color='mavi', interactive=False):
 ```
+Bir dağılım grafiği oluşturur.
 
-### Etkileşimli Çubuk Grafiği
+- **x_data**: X ekseni için sayısal değerlerden oluşan liste
+- **y_data**: Y ekseni için sayısal değerlerden oluşan liste
+- **title**: Grafiğin başlığı (str)
+- **xlabel**: X ekseni etiketi (str)
+- **ylabel**: Y ekseni etiketi (str)
+- **color**: Noktaların rengi (str)
+- **interactive**: Grafiğin etkileşimli olup olmadığını belirtir (bool)
 
-Etkileşimli çubuk grafiği oluşturmak için `bar_chart` fonksiyonunun `interactive` parametresini `True` olarak ayarlayabilirsiniz.
-
+### pie_chart
 ```python
-pv.bar_chart(data_bar, title="Etkileşimli Çubuk Grafiği", xlabel="Kategori", ylabel="Değer", interactive=True, color='purple')
+def pie_chart(data, title="Pasta Grafiği", interactive=False):
 ```
+Bir pasta grafiği oluşturur.
 
-### Dağılım Grafiği
+- **data**: Kategoriler anahtarlar ve sayısal değerler içeren sözlük
+- **title**: Grafiğin başlığı (str)
+- **interactive**: Grafiğin etkileşimli olup olmadığını belirtir (bool)
 
-Dağılım grafiği oluşturmak için `scatter_plot` fonksiyonunu kullanabilirsiniz.
-
+### time_series_analysis
 ```python
-x_data = [1, 2, 3, 4, 5]
-y_data = [10, 14, 12, 15, 10]
-pv.scatter_plot(x_data, y_data, title="Dağılım Grafiği", xlabel="X Ekseni", ylabel="Y Ekseni", color='blue')
+def time_series_analysis(data, lags=1, detect_anomalies=False, anomaly_threshold=3):
 ```
+Zaman serisi analizi yapar.
 
-### Etkileşimli Dağılım Grafiği
+- **data**: Sayısal değerlerden oluşan liste veya numpy array
+- **lags**: ARIMA modelinde kullanılacak lag sayısı (int)
+- **detect_anomalies**: Anomalileri tespit edip etmeyeceğini belirtir (bool)
+- **anomaly_threshold**: Anomalileri tespit etmek için eşik değeri (int)
 
-Etkileşimli dağılım grafiği oluşturmak için `scatter_plot` fonksiyonunun `interactive` parametresini `True` olarak ayarlayabilirsiniz.
-
+### detect_anomalies_in_series
 ```python
-pv.scatter_plot(x_data, y_data, title="Etkileşimli Dağılım Grafiği", xlabel="X Ekseni", ylabel="Y Ekseni", interactive=True, color='orange')
+def detect_anomalies_in_series(data, threshold=3):
 ```
+Bir zaman serisinde anomalileri tespit eder.
 
-### Pasta Grafiği
+- **data**: Sayısal değerlerden oluşan liste veya numpy array
+- **threshold**: Anomalileri tespit etmek için eşik değeri (int)
 
-Pasta grafiği oluşturmak için `pie_chart` fonksiyonunu kullanabilirsiniz.
-
+### clean_data
 ```python
-data_pie = {'Elma': 50, 'Armut': 30, 'Kiraz': 20}
-pv.pie_chart(data_pie, title="Pasta Grafiği")
+def clean_data(data, method='fillna', fill_value=0):
 ```
+Veriyi temizler.
 
-### Etkileşimli Pasta Grafiği
+- **data**: Sözlük veya pandas DataFrame
+- **method**: Veriyi temizlemek için kullanılacak yöntem ('fillna', 'dropna') (str)
+- **fill_value**: 'fillna' yöntemi kullanılıyorsa NaN değerlerini doldurmak için kullanılacak değer
 
-Etkileşimli pasta grafiği oluşturmak için `pie_chart` fonksiyonunun `interactive` parametresini `True` olarak ayarlayabilirsiniz.
-
+### set_theme
 ```python
-pv.pie_chart(data_pie, title="Etkileşimli Pasta Grafiği", interactive=True)
+def set_theme(theme):
 ```
+Grafikler için temayı ayarlar.
 
-### Zaman Serisi Analizi
+- **theme**: 'background_color', 'grid_color', 'line_color', 'font_family' anahtarlarına sahip sözlük
 
-Zaman serisi analizi yapmak için `time_series_analysis` fonksiyonunu kullanabilirsiniz.
-
+### live_line_chart
 ```python
-import pyVisio as pv
-import numpy as np
-
-data_ts = np.random.randn(100)
-summary, forecast, anomalies = pv.time_series_analysis(data_ts, detect_anomalies=True)
-print(summary)
-print("Forecast:", forecast)
-print("Anomalies:", anomalies)
+def live_line_chart(data, title="Canlı Çizgi Grafiği", xlabel="X Ekseni", ylabel="Y Ekseni", color='mavi'):
 ```
+Bir canlı çizgi grafiği oluşturur.
 
-### Anomali Tespiti
+- **data**: Sayısal değerlerden oluşan liste
+- **title**: Grafiğin başlığı (str)
+- **xlabel**: X ekseni etiketi (str)
+- **ylabel**: Y ekseni etiketi (str)
+- **color**: Çizginin rengi (str)
 
-Zaman serisi verisinde anomali tespiti yapmak için `detect_anomalies_in_series` fonksiyonunu kullanabilirsiniz.
-
+### live_bar_chart
 ```python
-import pyVisio as pv
-import numpy as np
-
-data_ts = np.random.randn(100)
-anomalies = pv.detect_anomalies_in_series(data_ts)
-print("Anomalies:", anomalies)
+def live_bar_chart(data, title="Canlı Bar Grafiği", xlabel="Kategori", ylabel="Değer", color='mavi'):
 ```
+Bir canlı bar grafiği oluşturur.
 
-### Rapor Oluşturma
+- **data**: Kategoriler anahtarlar ve sayısal değerler içeren sözlük
+- **title**: Grafiğin başlığı (str)
+- **xlabel**: X ekseni etiketi (str)
+- **ylabel**: Y ekseni etiketi (str)
+- **color**: Barların rengi (str)
 
-Otomatik rapor oluşturmak için `generate_report` fonksiyonunu kullanabilirsiniz.
-
+### generate_report
 ```python
-import pyVisio as pv
-
-report_data = {
-    'title': 'Veri Analiz Raporu',
-    'author': 'Hüseyin Kaya',
-    'date': '2024-06-22',
-    'content': [
-        {'type': 'line_chart', 'data': [1, 2, 3, 4, 5], 'title': 'Çizgi Grafiği'},
-        {'type': 'bar_chart', 'data': {'A': 10, 'B': 20, 'C': 30}, 'title': 'Çubuk Grafiği'}
-    ]
-}
-pv.generate_report(report_data, format='pdf', output_path='report.pdf')
+def generate_report(report_data, format='pdf', output_path='rapor.pdf'):
 ```
+Bir rapor oluşturur.
 
-### Veri Temizleme
+- **report_data**: Rapor detaylarını içeren sözlük
+- **format**: Raporun formatı ('pdf', 'html') (str)
+- **output_path**: Raporun kaydedileceği yol (str)
 
-Veri temizleme işlemi yapmak için `clean_data` fonksiyonunu kullanabilirsiniz.
-
+### basic_analysis
 ```python
-import pyVisio as pv
-
-raw_data = {'column1': [1, 2, None, 4, 5], 'column2': [5, None, 3, 2, 1]}
-cleaned_data = pv.clean_data(raw_data, method='fillna', fill_value=0)
-pv.line_chart(cleaned_data['column1'], title="Temizlenmiş Veri ile Çizgi Grafiği")
+def basic_analysis(data):
 ```
+Veri üzerinde temel analiz yapar.
 
-### Tema Ayarlama
+- **data**: Sayısal değerlerden oluşan liste
 
-Grafiklerin temasını ayarlamak için `set_theme` fonksiyonunu kullanabilirsiniz.
-
+### advanced_analysis
 ```python
-import pyVisio as pv
-
-custom_theme = {
-    'background_color': 'black',
-    'grid_color': 'gray',
-    'line_color': 'cyan',
-    'font_family': 'Arial'
-}
-pv.set_theme(custom_theme)
-pv.line_chart([1, 2, 3, 4, 5], title="Özelleştirilmiş Tema ile Çizgi Grafiği")
+def advanced_analysis(data):
 ```
+Veri üzerinde ileri düzey analiz yapar.
+
+- **data**: Sayısal değerlerden oluşan liste
