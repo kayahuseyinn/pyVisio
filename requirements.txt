@@ -3,6 +3,5 @@ plotly
 pandas
 numpy
 statsmodels
-weasyprint
 jinja2
-pygobject
+reportlab

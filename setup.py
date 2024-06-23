@@ -6,7 +6,7 @@ long_description = (this_directory / "docs" / "pypi.md").read_text()
 
 setup(
     name='pyVisio',
-    version='0.6',
+    version='1.5',
     packages=find_packages(),
     install_requires=[
         'matplotlib',
@@ -14,9 +14,8 @@ setup(
         'pandas',
         'numpy',
         'statsmodels',
-        'weasyprint',
         'jinja2',
-        'pygobject'  
+        'reportlab'
     ],
     author='Hüseyin Kaya',
     author_email='kaya87826@gmail.com',

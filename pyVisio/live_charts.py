@@ -4,7 +4,7 @@ import numpy as np
 
 def live_line_chart(data, title="Live Line Chart", xlabel="X Axis", ylabel="Y Axis", color='blue'):
     fig, ax = plt.subplots()
-    line, = ax.plot(range(len(data)), data, color=color)
+    line, = ax.plot(data, color=color)
     
     def update(frame, data, line):
         new_data = data[-1] + np.random.randn()  # Simulating new data point
@@ -14,7 +14,7 @@ def live_line_chart(data, title="Live Line Chart", xlabel="X Axis", ylabel="Y Ax
         ax.set_ylim(min(data) - 1, max(data) + 1)
         return line,
 
-    ani = animation.FuncAnimation(fig, update, fargs=(data, line), frames=range(100), blit=True, interval=200)
+    ani = animation.FuncAnimation(fig, update, fargs=(data, line), frames=range(100), blit=False, interval=200)
     plt.title(title)
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
@@ -33,7 +33,7 @@ def live_bar_chart(data, title="Live Bar Chart", xlabel="Category", ylabel="Valu
         ax.autoscale_view()
         return bars
 
-    ani = animation.FuncAnimation(fig, update, fargs=(data, bars), frames=range(100), blit=True, interval=200)
+    ani = animation.FuncAnimation(fig, update, fargs=(data, bars), frames=range(100), blit=False, interval=200)
     plt.title(title)
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)

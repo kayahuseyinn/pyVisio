@@ -2,8 +2,10 @@ LICENSE
 README.md
 setup.py
 pyVisio/__init__.py
+pyVisio/analysis.py
 pyVisio/charts.py
 pyVisio/data_cleaning.py
+pyVisio/live_charts.py
 pyVisio/regression.py
 pyVisio/reporting.py
 pyVisio/themes.py

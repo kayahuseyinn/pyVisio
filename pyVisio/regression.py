@@ -10,9 +10,26 @@ def linear_regression(x, y):
     return model.summary(), predictions
 
 def time_series_analysis(data, lags=1):
-    model = ARIMA(data, order=(lags, 1, 0))
+    """
+    Perform time series analysis.
+
+    Parameters:
+        data (array-like): The time series data.
+        lags (int, optional): The number of lags to use. Default is 1.
+
+    Returns:
+        summary: Summary of the ARIMA model.
+        forecast: Forecasted values.
+        anomalies: Detected anomalies (if any).
+    """
+    model = sm.tsa.ARIMA(data, order=(lags, 1, 0))
     fit = model.fit()
-    return fit.summary(), fit.predict(start=len(data), end=len(data) + 10)
+    forecast = fit.forecast(steps=10)
+    
+    # Dummy anomaly detection for demonstration purposes
+    anomalies = np.where(np.abs(data - fit.fittedvalues) > 2 * np.std(data), True, False)
+    
+    return fit.summary(), forecast, anomalies
 
 def detect_anomalies_in_series(data):
     # Basit anomali tespiti
