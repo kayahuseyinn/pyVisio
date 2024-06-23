@@ -6,7 +6,7 @@ long_description = (this_directory / "docs" / "pypi.md").read_text()
 
 setup(
     name='pyVisio',
-    version='1.7',
+    version='1.8',
     packages=find_packages(),
     install_requires=[
         'matplotlib',
