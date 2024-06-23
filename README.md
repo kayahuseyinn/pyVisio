@@ -11,7 +11,7 @@ pyVisio, interaktif ve dinamik veri görselleştirme ve analiz kütüphanesidir.
 
 ## Kurulum
 
-pyVisio'i pip ile kurabilirsiniz:
+pyVisio pip ile kurulabilir:
 
 ```bash
 pip install pyVisio
